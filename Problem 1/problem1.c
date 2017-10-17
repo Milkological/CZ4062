@@ -9,6 +9,8 @@
 
 int j;
 
+
+
 int main(int argc, char ** argv) {
     char buf[CHUNK];
 
@@ -62,7 +64,7 @@ int main(int argc, char ** argv) {
                         }
                     }
                     break;
-                case 0x77:
+                case 0x77:		//w
                     if (strcmp(buf+16, "american fuzzy lop") == 0) {
                         printf("CASE_07 Oh no, I've been caught, excellent!\n");
                         abort();
@@ -70,7 +72,7 @@ int main(int argc, char ** argv) {
                         printf("CASE_08 oops, I surrender\n");
                         abort();
                     } else  {
-                        printf("CASE_09 nothing found\n");
+                        printf("CASE_09 nothing found %s\n",buf+16);
                     }
                     break;
                 case 0x7F:
