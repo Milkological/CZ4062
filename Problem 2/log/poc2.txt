@@ -1,0 +1,62 @@
+==9218== Memcheck, a memory error detector
+==9218== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==9218== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==9218== Command: convert in/poc2 out/poc2
+==9218== 
+==9218== Syscall param msg->desc.port.name points to uninitialised byte(s)
+==9218==    at 0x10084534A: mach_msg_trap (in /usr/lib/system/libsystem_kernel.dylib)
+==9218==    by 0x100844796: mach_msg (in /usr/lib/system/libsystem_kernel.dylib)
+==9218==    by 0x10083E485: task_set_special_port (in /usr/lib/system/libsystem_kernel.dylib)
+==9218==    by 0x1009DA10E: _os_trace_create_debug_control_port (in /usr/lib/system/libsystem_trace.dylib)
+==9218==    by 0x1009DA458: _libtrace_init (in /usr/lib/system/libsystem_trace.dylib)
+==9218==    by 0x1005439DF: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==9218==    by 0x100018A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==9218==    by 0x100018C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==9218==    by 0x1000144A9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==9218==    by 0x100014440: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==9218==    by 0x100013523: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
+==9218==    by 0x1000135B8: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
+==9218==  Address 0x10488bd7c is on thread 1's stack
+==9218==  in frame #2, created by task_set_special_port (???:)
+==9218== 
+==9218== Warning: set address range perms: large range [0x10488f000, 0x115091100) (undefined)
+==9218== Warning: set address range perms: large range [0x115093000, 0x12b095c00) (undefined)
+==9218== Warning: set address range perms: large range [0x10488efe8, 0x115091118) (noaccess)
+--9218-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option
+--9218-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option (repeated 2 times)
+--9218-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option (repeated 4 times)
+==9218== Conditional jump or move depends on uninitialised value(s)
+==9218==    at 0x1001A5308: ExportQuantumPixels (in /usr/local/lib/libMagickCore-7.Q16HDRI.2.dylib)
+==9218==    by 0x100284DA0: WritePSDChannel (in /usr/local/lib/libMagickCore-7.Q16HDRI.2.dylib)
+==9218==    by 0x1002848A9: WritePSDChannels (in /usr/local/lib/libMagickCore-7.Q16HDRI.2.dylib)
+==9218==    by 0x100282C58: WritePSDImage (in /usr/local/lib/libMagickCore-7.Q16HDRI.2.dylib)
+==9218==    by 0x1000DE2A4: WriteImage (in /usr/local/lib/libMagickCore-7.Q16HDRI.2.dylib)
+==9218==    by 0x1000DE788: WriteImages (in /usr/local/lib/libMagickCore-7.Q16HDRI.2.dylib)
+==9218==    by 0x1004389E3: ConvertImageCommand (in /usr/local/lib/libMagickWand-7.Q16HDRI.0.dylib)
+==9218==    by 0x10048E782: MagickCommandGenesis (in /usr/local/lib/libMagickWand-7.Q16HDRI.0.dylib)
+==9218==    by 0x100000D90: main (in /usr/local/bin/convert)
+==9218== 
+==9218== 
+==9218== More than 10000000 total errors detected.  I'm not reporting any more.
+==9218== Final error counts will be inaccurate.  Go fix your program!
+==9218== Rerun with --error-limit=no to disable this cutoff.  Note
+==9218== that errors may occur in your program without prior warning from
+==9218== Valgrind, because errors are no longer being displayed.
+==9218== 
+==9218== Warning: set address range perms: large range [0x115092fe8, 0x12b095c18) (noaccess)
+==9218== 
+==9218== HEAP SUMMARY:
+==9218==     in use at exit: 140,693 bytes in 206 blocks
+==9218==   total heap usage: 5,387 allocs, 5,181 frees, 842,984,645 bytes allocated
+==9218== 
+==9218== LEAK SUMMARY:
+==9218==    definitely lost: 0 bytes in 0 blocks
+==9218==    indirectly lost: 0 bytes in 0 blocks
+==9218==      possibly lost: 72 bytes in 3 blocks
+==9218==    still reachable: 122,752 bytes in 49 blocks
+==9218==         suppressed: 17,869 bytes in 154 blocks
+==9218== Rerun with --leak-check=full to see details of leaked memory
+==9218== 
+==9218== For counts of detected and suppressed errors, rerun with: -v
+==9218== Use --track-origins=yes to see where uninitialised values come from
+==9218== ERROR SUMMARY: 10000000 errors from 2 contexts (suppressed: 4 from 4)
